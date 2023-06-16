@@ -16,7 +16,7 @@ public class ProjectConfig  implements WebMvcConfigurer{
     // los siguientes metodos son para incomporar el tema de internalizacion del proyecto
     
     @Bean
-    public LocaleResolver localeServer(){
+    public LocaleResolver localeResolver(){
         var slr = new SessionLocaleResolver();
         slr.setDefaultLocale(Locale.getDefault());
         slr.setLocaleAttributeName("session.current.locale");
