@@ -6,9 +6,11 @@
     <body>
         <header th:replace="layout/plantilla :: header"></header>
         
+        <setion th:replace="categoria/fragmentos :: agregarCategoria"/>
         <setion th:replace="categoria/fragmentos :: botonesAgregar"/>
         <setion th:replace="categoria/fragmentos :: agregarCategoria"/>
         <setion th:replace="categoria/fragmentos :: listadoCategorias"/>
+        
         
         <footer th:replace="layout/plantilla :: footer"></footer>
     </body>
