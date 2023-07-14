@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ProductoServiceImpl implements ProductoService{
-    
+public class ProductoServiceImpl implements ProductoService {
+
     @Autowired
     ProductoDao productoDao;
 
@@ -18,11 +18,11 @@ public class ProductoServiceImpl implements ProductoService{
     @Transactional(readOnly = true)
     public List<Producto> getProductos(boolean activos) {
         List<Producto> productos = productoDao.findAll();
-        
-        if(activos){
+
+        if (activos) {
             productos.removeIf(x -> !x.isActivo());
         }
-        
+
         return productos;
     }
 
@@ -44,5 +44,23 @@ public class ProductoServiceImpl implements ProductoService{
         productoDao.delete(producto); // se elimina con todo el objeto
         //productoDao.deletebyId(producto.getIdCaregoria);  se elimina solo con el id
     }
-    
+
+    // Lista de productos con precio entre ordendados por descripción ConsultaAmpliada
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup) {
+        return productoDao.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
+    }
+
+      @Override
+    @Transactional(readOnly=true)    
+    public List<Producto> metodoJPQL(double precioInf, double precioSup) {
+        return productoDao.metodoJPQL(precioInf, precioSup);
+    }
+     @Override
+    @Transactional(readOnly=true)    
+    public List<Producto> metodoNativo(double precioInf, double precioSup) {
+        return productoDao.metodoNativo(precioInf, precioSup);
+    }
+
 }
