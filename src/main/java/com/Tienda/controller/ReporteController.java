@@ -79,6 +79,12 @@ public class ReporteController {
         var reporte="Inventario";
         return reporteService.generaReporte(reporte, null, tipo);
     }
+    @GetMapping("/ventasUsuario")
+    public ResponseEntity<Resource> reporteUsuario(@RequestParam String tipo) 
+            throws IOException {
+        var reporte="VentasUsuario";
+        return reporteService.generaReporte(reporte, null, tipo);
+    }
 
 }
 
